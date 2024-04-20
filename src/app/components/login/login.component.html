@@ -1,0 +1,48 @@
+<div class="py-3 col-8 mx-auto">
+
+  <h2 class="activeL display-3">Login </h2>
+  <form class="col-10 mx-auto my-3" [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+
+
+
+
+
+    <div class="form-floating">
+      <input type="text" placeholder="ex@ex.com" class="form-control" formControlName="email" [ngClass]="{
+        'is-valid': !loginForm.get('email')?.errors && loginForm.get('email')?.dirty,
+        'is-invalid': loginForm.get('email')?.errors && loginForm.get('email')?.dirty
+      }">
+      <label  class="activeL">Email </label>
+      <ul class="list-unstyled alert alert-danger p-2 invalid-feedback">
+        <li *ngIf="loginForm.get('email')?.getError('required')">Email is required</li>
+        <li *ngIf="loginForm.get('email')?.getError('email')">Please enter a valid email</li>
+      </ul>
+    </div>
+
+
+
+
+
+    <div class="form-floating">
+      <input type="password" placeholder="Enter a driving license" class="form-control" formControlName="password" [ngClass]="{
+        'is-valid': !loginForm.get('password')?.errors && loginForm.get('password')?.dirty,
+        'is-invalid': loginForm.get('password')?.errors && loginForm.get('password')?.dirty
+      }">
+      <label  class="activeL">Password </label>
+      <ul class="list-unstyled alert alert-danger p-2 invalid-feedback">
+        <li *ngIf="loginForm.get('password')?.getError('required')">Password is required</li>
+        <li *ngIf="loginForm.get('password')?.getError('pattern')">Password must start with upperCase and many numbers</li>
+      </ul>
+    </div>
+
+
+
+
+    <button class="btn btn-success" type="submit" [disabled]="loginForm.invalid"> <span>Submit</span>
+
+
+    </button>
+
+
+  </form>
+</div>
