@@ -48,6 +48,10 @@ export class SignupComponent implements OnInit {
     }
   }
 
+  alreadyReg(){
+    this._Router.navigate(['/login'])
+  }
+
   register() {
     if (!this.selectedFile || !this.registerForm.valid) return;
 
