@@ -22,17 +22,16 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
   }
+  id:any
   login(formData:FormGroup){
     if(formData.valid){
       this._Auth.login(formData.value).subscribe({
         next:res =>{
-          console.log(res)
           if(res.message=='success')
             {
-              console.log(formData.value);
-
             localStorage.setItem("CurrentToken",res.token)
             localStorage.setItem("UserName",res.userName)
+            localStorage.setItem("UserId",res.id)
             console.log(res);
             this._Auth.decode();
             this.toastr.success('You are logged in successfully', 'Hi '+ res.userName,{
@@ -45,7 +44,6 @@ export class LoginComponent implements OnInit {
             this.toastr.warning(err.error.message, 'Ooops',{
               timeOut: 1500,
             });
-
           }
         }
       )

@@ -13,6 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { CarComponent } from './components/car/car.component';
+import { CarDetailsComponent } from './components/car-details/car-details.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     BlankLayoutComponent,
     AuthLayoutComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    CarComponent,
+    CarDetailsComponent
   ],
   imports: [
     BrowserModule,

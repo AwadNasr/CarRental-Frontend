@@ -1,0 +1,25 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-3" *ngFor="let item of cars">
+      <div class="card">
+        <img [src]="item.carImageURL" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{item.brand}}</h5>
+          <h5 class="card-title">{{item.model}}</h5>
+          <h5 class="card-title">{{item.year}}</h5>
+          <h5 class="card-title">{{item.color}}</h5>
+          <h5 class="card-title">{{item.cost_Per_Day |currency}}</h5>
+          <h5 class="card-title">{{item.seats}}</h5>
+          <div class="green-circle" *ngIf="item.isAvailable"></div>
+          <div class="red-circle" *ngIf="!item.isAvailable"></div>
+          <div *ngIf="item.trans_Type==1">Automatic</div>
+          <div *ngIf="item.trans_Type==0">Manual</div>
+
+          <a  class="btn btn-primary" [routerLink]="['/cardetails',item.id]">Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

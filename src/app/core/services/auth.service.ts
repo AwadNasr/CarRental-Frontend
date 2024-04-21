@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { tick } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { BehaviorSubject,Observable } from 'rxjs';
@@ -10,6 +11,7 @@ import { BehaviorSubject,Observable } from 'rxjs';
 export class AuthService {
 
   currentUser =new BehaviorSubject(null)
+
 
   constructor(private _HttpClient:HttpClient,private _Router:Router) {
     if(localStorage.getItem('CurrentToken') !==null){
@@ -27,6 +29,7 @@ export class AuthService {
   logout(){
     localStorage.removeItem('CurrentToken')
     localStorage.removeItem('UserName')
+    localStorage.removeItem('UserId')
     this.currentUser.next(null)
     this._Router.navigate(['/login'])
   }

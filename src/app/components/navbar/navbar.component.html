@@ -10,7 +10,10 @@
   <div class="collapse navbar-collapse" id="collapsibleNavId">
     <ul class="navbar-nav me-auto mt-2 mt-lg-0">
       <li class="nav-item">
-        <a class="nav-link " routerLink="home" routerLinkActive="text-main"  >Home</a>
+        <a class="nav-link color-main" routerLink="home" routerLinkActive="color-sec" >Home</a>
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link color-main" routerLink="car" routerLinkActive="color-sec" >Cars</a>
       </li>
     </ul>
     <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
@@ -30,16 +33,16 @@
         <a class="nav-link"  ><i  class="fab mx-2 fa-linkedin"></i></a>
       </li>
       <li class="nav-item" *ngIf="!isLogin">
-        <a class="nav-link" routerLink="login" routerLinkActive="text-main" >LogIn</a>
+        <a class="nav-link color-main" routerLink="login" routerLinkActive="color-sec" >LogIn</a>
       </li>
       <li class="nav-item" *ngIf="!isLogin">
-        <a class="nav-link" routerLink="register" routerLinkActive="text-main" >Register</a>
+        <a class="nav-link color-main" routerLink="register" routerLinkActive="color-sec" >Register</a>
       </li>
 
 
 
       <li class="nav-item" *ngIf="isLogin" (click)="logout()">
-        <a class="nav-link">Logout </a>
+        <a class="nav-link color-main" routerLinkActive="color-sec" >Logout </a>
       </li>
 
 

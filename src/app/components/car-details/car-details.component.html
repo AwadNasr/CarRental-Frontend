@@ -1,0 +1,102 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <img [src]="carDetails.carImageURL" class="w-100" alt="">
+    </div>
+    <div class="col-6">
+      <p>{{carDetails.brand}}</p>
+      <p>{{carDetails.model}}</p>
+      <p>{{carDetails.year}}</p>
+      <!-- Button trigger modal -->
+<button type="button" class="btn-color w-100" data-bs-toggle="modal" (click)="createForm()" data-bs-target="#exampleModal" [hidden]="!carDetails.isAvailable" >
+  Rent
+</button>
+<p *ngIf="!carDetails.isAvailable" class="alert alert-danger text-center">This car is not available now</p>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <form action="" [formGroup]="rentalForm" (ngSubmit)="rent(rentalForm)">
+        <div class="form-floating my-3">
+          <input type="date"  class="form-control" formControlName="start_Date" [ngClass]="{
+            'is-valid': !rentalForm.get('start_Date')?.errors && rentalForm.get('start_Date')?.dirty,
+            'is-invalid': rentalForm.get('start_Date')?.errors && rentalForm.get('start_Date')?.dirty
+          }">
+          <label  class="activeL color-main">Start Date </label>
+          <ul class="list-unstyled alert alert-danger p-2 invalid-feedback">
+            <li *ngIf="rentalForm.get('start_Date')?.getError('required')">Start Date is required</li>
+          </ul>
+        </div>
+        <div class="form-floating my-3">
+          <input type="date"  class="form-control" formControlName="end_Date" [ngClass]="{
+            'is-valid': !rentalForm.get('end_Date')?.errors && rentalForm.get('end_Date')?.dirty,
+            'is-invalid': rentalForm.get('end_Date')?.errors && rentalForm.get('end_Date')?.dirty
+          }">
+          <label  class="activeL color-main">End Date </label>
+          <ul class="list-unstyled alert alert-danger p-2 invalid-feedback">
+            <li *ngIf="rentalForm.get('end_Date')?.getError('required')">End Date is required</li>
+          </ul>
+        </div>
+        <div class="form-floating my-3">
+          <input type="text"  class="form-control" formControlName="pick_Location" [ngClass]="{
+            'is-valid': !rentalForm.get('pick_Location')?.errors && rentalForm.get('pick_Location')?.dirty,
+            'is-invalid': rentalForm.get('pick_Location')?.errors && rentalForm.get('pick_Location')?.dirty
+          }">
+          <label  class="activeL color-main">Pick Location </label>
+          <ul class="list-unstyled alert alert-danger p-2 invalid-feedback">
+            <li *ngIf="rentalForm.get('pick_Location')?.getError('required')">Pick location is required</li>
+          </ul>
+        </div>
+        <div class="form-floating my-3">
+          <input type="text"  class="form-control" formControlName="ret_Location" [ngClass]="{
+            'is-valid': !rentalForm.get('ret_Location')?.errors && rentalForm.get('ret_Location')?.dirty,
+            'is-invalid': rentalForm.get('ret_Location')?.errors && rentalForm.get('ret_Location')?.dirty
+          }">
+          <label  class="activeL color-main">Return Location </label>
+          <ul class="list-unstyled alert alert-danger p-2 invalid-feedback">
+            <li *ngIf="rentalForm.get('ret_Location')?.getError('required')">Return location is required</li>
+          </ul>
+        </div>
+
+        <div class="form-floating my-3">
+          <input type="text"  class="form-control" formControlName="trans_Id" [ngClass]="{
+            'is-valid': !rentalForm.get('trans_Id')?.errors && rentalForm.get('trans_Id')?.dirty,
+            'is-invalid': rentalForm.get('trans_Id')?.errors && rentalForm.get('trans_Id')?.dirty
+          }">
+          <label  class="activeL color-main">Trans Id </label>
+          <ul class="list-unstyled alert alert-danger p-2 invalid-feedback">
+            <li *ngIf="rentalForm.get('trans_Id')?.getError('required')">Trans Id is required</li>
+          </ul>
+        </div>
+        <!-- <input type="text"  class="form-control" hidden formControlName="clientId">
+        <input type="text"  class="form-control" hidden formControlName="carId">
+        <input type="text"  class="form-control" hidden formControlName="total_Cost">
+        <input type="text"  class="form-control" hidden formControlName="pay_Date"> -->
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+       </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3" *ngFor="let item of reviewArr">
+      <p>{{item.rating}}</p>
+      <p>{{item.comment}}</p>
+      <p>{{item.userName}}</p>
+    </div>
+  </div>
+</div>
